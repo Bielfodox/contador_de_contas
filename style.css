@@ -69,3 +69,8 @@ button{
     border-radius: 8px;
     border: 1px solid black;
 }
+@media screen and (max-width: 500px) {
+    .container{
+        max-width: 80%;
+    }
+}
