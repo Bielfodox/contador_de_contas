@@ -292,11 +292,6 @@ function salvar(){
 
         saves.push(option)
 
-        for (var i in saves) {
-            console.log(saves[i].linha)
-            console.log(saves[i].id)
-        }
-
         resumo.innerHTML = `<br><br><p>SOMA DE TODAS AS FATURAS: R$ ${totalFat}</p>`
         resumo.innerHTML += `<p>TOTAL PARA GABRIEL: R$ ${totalGab}</p>`
         resumo.innerHTML += `<p>TOTAL PARA RENATA: R$ ${totalRen}</p>`
@@ -322,7 +317,6 @@ function apagar(e){
     totalRen = 0
     totalFat = 0
     totalOut = 0
-    console.log(e.getAttribute("id"))
     let info = document.getElementById("info")
     let numeros
     info.innerHTML =``
@@ -342,11 +336,6 @@ function apagar(e){
         }
     }
     totalOut = totalFat - totalGab - totalRen
-    for (var i in saves) {
-        console.log(saves[i].linha)
-        console.log(saves[i].id)
-    }
-
 
     resumo.innerHTML = `<br><br><p>SOMA DE TODAS AS FATURAS: R$ ${totalFat}</p>`
     resumo.innerHTML += `<p>TOTAL PARA GABRIEL: R$ ${totalGab}</p>`
@@ -429,10 +418,6 @@ function salvarFatura(){
     fatura.innerHTML += optionFaturas.linha
     
     faturas.push(optionFaturas)
-    for (var i in faturas) {
-        console.log(faturas[i].id)
-        console.log(faturas[i].linha)
-    }
     counterFat++
     localStorage.setItem("fatura",fatura.innerHTML)
     localStorage.setItem("contadorFat",counterFat)
