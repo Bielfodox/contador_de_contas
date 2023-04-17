@@ -3,6 +3,8 @@ soma2 = 0
 soma3 = 0
 soma4 = 0
 soma5 = 0
+soma6 = 0
+soma7 = 0
 totalRen = 0
 totalGab = 0
 totalOut = 0
@@ -36,6 +38,14 @@ optionSaves = {
     id: 0,
     linha: ""
  }
+ option6 = {
+    id: 0,
+    linha: ""
+ }
+ option7 = {
+    id: 0,
+    linha: ""
+ }
 
 var saves = []
 var faturas = []
@@ -44,13 +54,16 @@ var vet2 = []
 var vet3 = []
 var vet4 = []
 var vet5 = []
+var vet6 = []
+var vet7 = []
 var number = /([0-9]+[.][0-9]+)|([0-9]+)/g
 a1 = 0
 a2 = 0
 a3 = 0
 a4 = 0 
 a5 = 0
-
+a6 = 0
+a7 = 0
 
 // SOMA GABRIEL
 const inputGab = document.getElementById('gabriel')
@@ -449,6 +462,165 @@ function somar5(){
     a5++
 }
 
+// SOMA CATEGORIA 3
+const inputOutros3 = document.getElementById('outros3')
+inputOutros3.addEventListener('keyup', function (e){
+  var key = e.which || e.keyCode;
+  if (key == 13) {
+    let outros3Elem = parseFloat(document.getElementById("outros3").value)
+    if(isNaN(outros3Elem)){
+        outros3Elem = 0
+    }
+    let valor = document.getElementById("soma6")
+    soma6 = parseFloat((soma6 + outros3Elem).toFixed(2))
+   // INÍCIO DA EDIÇÃO(depois do soma1)
+   let counter6 = localStorage.getItem("contador6")
+   let vet6 = JSON.parse(localStorage.getItem('vet6'))
+   if(vet6 == null){
+       vet6 = []
+   }
+   if(counter6 == null){
+       counter6 = 1
+   }
+   option6 = {
+       id: counter6,
+       linha: ""
+   }
+
+   // PAUSEI AQUIIIIIIIIIIIIIIIIIIII
+   if(a6 == 0) option6.linha += `<p class ="paragItem"><button class="item" onclick="apagar_item6(this)" id="${counter6}">R$ ${outros3Elem}</button></p>`
+   else option6.linha += `<p class ="paragItem"> + <button class="item" onclick="apagar_item6(this)" id="${counter6}">R$ ${outros3Elem}</button></p>`
+   
+   vet6.push(option6)
+
+   valor.innerHTML += option6.linha
+   let total = document.getElementById("total6")
+   total.innerHTML = `<p class="total">Soma: R$ ${soma6}</p><br><br>`
+   counter6++
+   localStorage.setItem("valor6",valor.innerHTML)
+   localStorage.setItem("vet6", JSON.stringify(vet5))
+   localStorage.setItem("contador6",counter5)
+   //FIM da edição(ANTES do document.getElementById("renata").value = null)
+    document.getElementById("outros3").value = null
+    a6++
+  }
+})
+    
+function somar5(){
+    let outros3Elem = parseFloat(document.getElementById("outros3").value)
+    if(isNaN(outros3Elem)){
+        outros3Elem = 0
+    }
+    let valor = document.getElementById("soma6")
+    soma6 = parseFloat((soma6 + outros3Elem).toFixed(2))
+   // INÍCIO DA EDIÇÃO(depois do soma1)
+   let counter6 = localStorage.getItem("contador6")
+   let vet6 = JSON.parse(localStorage.getItem('vet6'))
+   if(vet6 == null){
+       vet6 = []
+   }
+   if(counter6 == null){
+       counter6 = 1
+   }
+   option6 = {
+       id: counter6,
+       linha: ""
+   }
+   if(a6 == 0) option6.linha += `<p class ="paragItem"><button class="item" onclick="apagar_item6(this)" id="${counter6}">R$ ${outros3Elem}</button></p>`
+   else option6.linha += `<p class ="paragItem"> + <button class="item" onclick="apagar_item6(this)" id="${counter6}">R$ ${outros3Elem}</button></p>`
+   
+   vet6.push(option6)
+
+   valor.innerHTML += option6.linha
+   let total = document.getElementById("total6")
+   total.innerHTML = `<p class="total">Soma: R$ ${soma6}</p><br><br>`
+   counter6++
+   localStorage.setItem("valor6",valor.innerHTML)
+   localStorage.setItem("vet6", JSON.stringify(vet6))
+   localStorage.setItem("contador6",counter6)
+   //FIM da edição(ANTES do document.getElementById("renata").value = null)
+    document.getElementById("outros3").value = null
+    a6++
+}
+
+// SOMA CATEGORIA 4
+const inputOutros4 = document.getElementById('outros4')
+inputOutros4.addEventListener('keyup', function (e){
+  var key = e.which || e.keyCode;
+  if (key == 13) {
+    let outros4Elem = parseFloat(document.getElementById("outros4").value)
+    if(isNaN(outros4Elem)){
+        outros4Elem = 0
+    }
+    let valor = document.getElementById("soma7")
+    soma7 = parseFloat((soma7 + outros4Elem).toFixed(2))
+   // INÍCIO DA EDIÇÃO(depois do soma1)
+   let counter7 = localStorage.getItem("contador7")
+   let vet7 = JSON.parse(localStorage.getItem('vet7'))
+   if(vet7 == null){
+       vet7 = []
+   }
+   if(counter7 == null){
+       counter7 = 1
+   }
+   option7 = {
+       id: counter7,
+       linha: ""
+   }
+   if(a7 == 0) option7.linha += `<p class ="paragItem"><button class="item" onclick="apagar_item7(this)" id="${counter7}">R$ ${outros4Elem}</button></p>`
+   else option7.linha += `<p class ="paragItem"> + <button class="item" onclick="apagar_item7(this)" id="${counter7}">R$ ${outros4Elem}</button></p>`
+   
+   vet7.push(option7)
+
+   valor.innerHTML += option7.linha
+   let total = document.getElementById("total7")
+   total.innerHTML = `<p class="total">Soma: R$ ${soma7}</p><br><br>`
+   counter7++
+   localStorage.setItem("valor7",valor.innerHTML)
+   localStorage.setItem("vet7", JSON.stringify(vet7))
+   localStorage.setItem("contador7",counter7)
+   //FIM da edição(ANTES do document.getElementById("renata").value = null)
+    document.getElementById("outros4").value = null
+    a7++
+  }
+})
+    
+function somar7(){
+    let outros4Elem = parseFloat(document.getElementById("outros4").value)
+    if(isNaN(outros4Elem)){
+        outros4Elem = 0
+    }
+    let valor = document.getElementById("soma7")
+    soma7 = parseFloat((soma7 + outros4Elem).toFixed(2))
+   // INÍCIO DA EDIÇÃO(depois do soma1)
+   let counter7 = localStorage.getItem("contador7")
+   let vet7 = JSON.parse(localStorage.getItem('vet7'))
+   if(vet7 == null){
+       vet7 = []
+   }
+   if(counter7 == null){
+       counter7 = 1
+   }
+   option7 = {
+       id: counter7,
+       linha: ""
+   }
+   if(a7 == 0) option7.linha += `<p class ="paragItem"><button class="item" onclick="apagar_item7(this)" id="${counter7}">R$ ${outros4Elem}</button></p>`
+   else option7.linha += `<p class ="paragItem"> + <button class="item" onclick="apagar_item7(this)" id="${counter7}">R$ ${outros4Elem}</button></p>`
+   
+   vet7.push(option7)
+
+   valor.innerHTML += option7.linha
+   let total = document.getElementById("total7")
+   total.innerHTML = `<p class="total">Soma: R$ ${soma7}</p><br><br>`
+   counter7++
+   localStorage.setItem("valor7",valor.innerHTML)
+   localStorage.setItem("vet7", JSON.stringify(vet7))
+   localStorage.setItem("contador7",counter7)
+   //FIM da edição(ANTES do document.getElementById("renata").value = null)
+    document.getElementById("outros4").value = null
+    a7++
+}
 // BOTÃO CALCULAR FATURA
 function calcular(){
     let resultado = document.getElementById("resultado")
@@ -465,7 +637,13 @@ function calcular(){
     if(categoria2 != ""){
         resultado.innerHTML += `<p class="result">${categoria2}: R$ ${soma5}</p><br>`
     }
-    resultado.innerHTML += `<p class="result">Total da Fatura: R$ ${soma1+soma2+soma3+soma4+soma5}</p><br>`
+    if(categoria3 != ""){
+        resultado.innerHTML += `<p class="result">${categoria3}: R$ ${soma6}</p><br>`
+    }
+    if(categoria4 != ""){
+        resultado.innerHTML += `<p class="result">${categoria4}: R$ ${soma7}</p><br>`
+    }
+    resultado.innerHTML += `<p class="result">Total da Fatura: R$ ${soma1+soma2+soma3+soma4+soma5+soma6+soma7}</p><br>`
 }
 
 let info = document.getElementById("info")
@@ -488,11 +666,15 @@ function salvar(){
         let resumo = document.getElementById("resumo")
         let categoria1 = document.getElementById("cat1").value
         let categoria2 = document.getElementById("cat2").value
+        let categoria3 = document.getElementById("cat3").value
+        let categoria4 = document.getElementById("cat4").value
         let somaGab = soma1 + soma3/2
         let somaRen = soma2 + soma3/2
         let somaCat1 = soma4
         let somaCat2 = soma5
-        let somaTotal = soma1+soma2+soma3+soma4+soma5
+        let somaCat3 = soma6
+        let somaCat4 = soma7
+        let somaTotal = soma1+soma2+soma3+soma4+soma5+soma6+soma7
         let counter = localStorage.getItem("contadorInfo")
         let saves = JSON.parse(localStorage.getItem('vetSaves'))
         if(saves == null){
@@ -508,22 +690,23 @@ function salvar(){
         
         totalGab = totalGab + somaGab
         totalRen = totalRen + somaRen
-        totalOut = totalOut + somaCat1 + somaCat2
+        totalOut = totalOut + somaCat1 + somaCat2+ somaCat3 + somaCat4
         totalFat = totalFat + somaTotal
         
-        if(categoria1 == "" && categoria2 == ""){
-            optionSaves.linha +=`<li id="${counter}">Cartão ${cartao} | Gabriel: R$ ${somaGab} | Renata: R$ ${somaRen} | Total: R$ ${somaTotal}</li>`
+        if(categoria1 == "" && categoria2 == "" && categoria3 == "" && categoria4 == ""){
+            optionSaves.linha += `<li id="${counter}">Cartão ${cartao} | Gabriel: R$ ${somaGab} | Renata: R$ ${somaRen} | Total: R$ ${somaTotal} </li>`
         }
         else{
-            if(categoria1 != "" && categoria2 == ""){
-                optionSaves.linha += `<li id="${counter}">Cartão ${cartao} | Gabriel: R$ ${somaGab} | Renata: R$ ${somaRen} | ${categoria1}: R$ ${somaCat1} | Total: R$ ${somaTotal} </li>`
-            }
-            if(categoria1 == "" && categoria2 != ""){
-                optionSaves.linha += `<li id="${counter}">Cartão ${cartao} | Gabriel: R$ ${somaGab} | Renata: R$ ${somaRen} | ${categoria2}: R$ ${somaCat2} | Total: R$ ${somaTotal} </li>`
-            } 
-            if(categoria1 != "" && categoria2 != ""){
-                optionSaves.linha += `<li id="${counter}">Cartão ${cartao} | Gabriel: R$ ${somaGab} | Renata: R$ ${somaRen} | ${categoria1}: R$ ${somaCat1} | ${categoria2}: R$ ${somaCat2} | Total: R$ ${somaTotal} </li>`
-            }   
+            optionSaves.linha += `<li id="${counter}">Cartão ${cartao} | Gabriel: R$ ${somaGab} | Renata: R$ ${somaRen} | ${categoria1}: R$ ${somaCat1} | ${categoria2}: R$ ${somaCat2} | ${categoria3}: R$ ${somaCat3} | ${categoria4}: R$ ${somaCat4} | Total: R$ ${somaTotal} </li>`
+            // if(categoria1 != "" && categoria2 == ""){
+            //     optionSaves.linha += `<li id="${counter}">Cartão ${cartao} | Gabriel: R$ ${somaGab} | Renata: R$ ${somaRen} | ${categoria1}: R$ ${somaCat1} | Total: R$ ${somaTotal} </li>`
+            // }
+            // if(categoria1 == "" && categoria2 != ""){
+            //     optionSaves.linha += `<li id="${counter}">Cartão ${cartao} | Gabriel: R$ ${somaGab} | Renata: R$ ${somaRen} | ${categoria2}: R$ ${somaCat2} | Total: R$ ${somaTotal} </li>`
+            // } 
+            // if(categoria1 != "" && categoria2 != ""){
+            //     optionSaves.linha += `<li id="${counter}">Cartão ${cartao} | Gabriel: R$ ${somaGab} | Renata: R$ ${somaRen} | ${categoria1}: R$ ${somaCat1} | ${categoria2}: R$ ${somaCat2} | Total: R$ ${somaTotal} </li>`
+            // }   
         }
         optionSaves.linha += `<button onclick="apagar(this)" id="${counter}">Apagar</button>`
         info.innerHTML += optionSaves.linha
@@ -607,28 +790,40 @@ function zerar(){
     soma3 = 0
     soma4 = 0
     soma5 = 0
+    soma6 = 0
+    soma7 = 0
     a1 = 0
     a2 = 0
     a3 = 0
     a4 = 0 
     a5 = 0
+    a6 = 0 
+    a7 = 0
     regGab = ""
     regRen = ""
     regNos = ""
     regOutros1 = ""
     regOutros2 = ""
+    regOutros3 = ""
+    regOutros4 = ""
     document.getElementById("soma1").innerHTML = ``
     document.getElementById("soma2").innerHTML = ``
     document.getElementById("soma3").innerHTML = ``
     document.getElementById("soma4").innerHTML = ``
     document.getElementById("soma5").innerHTML = ``
+    document.getElementById("soma6").innerHTML = ``
+    document.getElementById("soma7").innerHTML = ``
     document.getElementById("cat1").value = null
     document.getElementById("cat2").value = null
+    document.getElementById("cat3").value = null
+    document.getElementById("cat4").value = null
     document.getElementById("gabriel").value = null
     document.getElementById("renata").value = null
     document.getElementById("nos").value = null
     document.getElementById("outros1").value = null
     document.getElementById("outros2").value = null
+    document.getElementById("outros3").value = null
+    document.getElementById("outros4").value = null
     document.getElementById("resultado").innerHTML =''
 }
 //BOTÃO SALVAR FATURA
@@ -699,6 +894,12 @@ function zerarRegistro(){
     localStorage.removeItem("valor5")
     localStorage.removeItem("vet5")
     localStorage.removeItem("contador5")
+    localStorage.removeItem("valor6")
+    localStorage.removeItem("vet6")
+    localStorage.removeItem("contador6")
+    localStorage.removeItem("valor7")
+    localStorage.removeItem("vet7")
+    localStorage.removeItem("contador7")
 }
 // APAGAR ITENS DE GABRIEL
 function apagar_item1(e){
@@ -840,7 +1041,62 @@ function apagar_item5(e){
     localStorage.setItem("valor5",valor.innerHTML)
     localStorage.setItem('vet5', JSON.stringify(vet5))
 }
+// APAGAR ITENS DE CATEGORIA 3
+function apagar_item6(e){
+    let valor = document.getElementById("soma6")
+    let vet6 = JSON.parse(localStorage.getItem('vet6'))
+    let total = document.getElementById("total6")
+    vet6 = vet6.filter(option6 => option6.id != e.getAttribute("id"))
+    
+    soma6 = 0
+    let somaItens = 0
+    let numeros
+    valor.innerHTML =``
 
+    for (var i in vet6) {
+        valor.innerHTML += vet6[i].linha
+        numeros = vet6[i].linha.match(number)
+        for (var i in numeros) {
+            if(i==2){
+                somaItens += parseFloat(numeros[i]) 
+                somaItens = parseFloat(somaItens.toFixed(2))
+            } 
+        }
+    }
+    soma6 = somaItens
+    if(soma6 == 0) a6 = 0 
+    total.innerHTML = `<p class="total">Soma: R$ ${soma6}</p><br><br>`
+    localStorage.setItem("valor6",valor.innerHTML)
+    localStorage.setItem('vet6', JSON.stringify(vet6))
+}
+// APAGAR ITENS DE CATEGORIA 4
+function apagar_item7(e){
+    let valor = document.getElementById("soma7")
+    let vet7 = JSON.parse(localStorage.getItem('vet7'))
+    let total = document.getElementById("total7")
+    vet7 = vet7.filter(option7 => option7.id != e.getAttribute("id"))
+    
+    soma7 = 0
+    let somaItens = 0
+    let numeros
+    valor.innerHTML =``
+
+    for (var i in vet7) {
+        valor.innerHTML += vet7[i].linha
+        numeros = vet7[i].linha.match(number)
+        for (var i in numeros) {
+            if(i==2){
+                somaItens += parseFloat(numeros[i]) 
+                somaItens = parseFloat(somaItens.toFixed(2))
+            } 
+        }
+    }
+    soma7 = somaItens
+    if(soma7 == 0) a7 = 0 
+    total.innerHTML = `<p class="total">Soma: R$ ${soma7}</p><br><br>`
+    localStorage.setItem("valor7",valor.innerHTML)
+    localStorage.setItem('vet7', JSON.stringify(vet5))
+}
 
 //ONLOAD
 onload = function(){
