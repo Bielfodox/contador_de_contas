@@ -1097,7 +1097,7 @@ function apagar_item7(e){
     if(soma7 == 0) a7 = 0 
     total.innerHTML = `<p class="total">Soma: R$ ${soma7}</p><br><br>`
     localStorage.setItem("valor7",valor.innerHTML)
-    localStorage.setItem('vet7', JSON.stringify(vet5))
+    localStorage.setItem('vet7', JSON.stringify(vet7))
 }
 
 //ONLOAD
