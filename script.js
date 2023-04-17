@@ -498,15 +498,15 @@ inputOutros3.addEventListener('keyup', function (e){
    total.innerHTML = `<p class="total">Soma: R$ ${soma6}</p><br><br>`
    counter6++
    localStorage.setItem("valor6",valor.innerHTML)
-   localStorage.setItem("vet6", JSON.stringify(vet5))
-   localStorage.setItem("contador6",counter5)
+   localStorage.setItem("vet6", JSON.stringify(vet6))
+   localStorage.setItem("contador6",counter6)
    //FIM da edição(ANTES do document.getElementById("renata").value = null)
     document.getElementById("outros3").value = null
     a6++
   }
 })
     
-function somar5(){
+function somar6(){
     let outros3Elem = parseFloat(document.getElementById("outros3").value)
     if(isNaN(outros3Elem)){
         outros3Elem = 0
