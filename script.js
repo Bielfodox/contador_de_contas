@@ -627,6 +627,8 @@ function calcular(){
     let cartao = document.getElementById("card").value
     let categoria1 = document.getElementById("cat1").value
     let categoria2 = document.getElementById("cat2").value
+    let categoria3 = document.getElementById("cat3").value
+    let categoria4 = document.getElementById("cat4").value
     resultado.innerHTML = `<h2>Cartão ${cartao} </h2><br>`
     resultado.innerHTML += `<p class="result">Gabriel: R$ ${soma1 + soma3/2}</p><br>`
     resultado.innerHTML += `<p class="result">Renata: R$ ${soma2 + soma3/2}</p><br>`
